@@ -10,19 +10,6 @@ from recipes.models import Recipe
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-def log_rating(request, recipe_id):
-    if request.method == "POST":
-        form = RatingForm(request.POST)
-        if form.is_valid():
-            try:
-                rating = form.save(commit=False)
-                rating.recipe = Recipe.objects.get(pk=recipe_id)
-                rating.save()
-            except Recipe.DoesNotExist:
-                return redirect("recipes_list")
-    return redirect("recipe_detail", pk=recipe_id)
-
-
 class RecipeListView(ListView):
     model = Recipe
     template_name = "recipes/list.html"
@@ -61,3 +48,16 @@ class RecipeDeleteView(LoginRequiredMixin, DeleteView):
     model = Recipe
     template_name = "recipes/delete.html"
     success_url = reverse_lazy("recipes_list")
+
+
+def log_rating(request, recipe_id):
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            try:
+                rating = form.save(commit=False)
+                rating.recipe = Recipe.objects.get(pk=recipe_id)
+                rating.save()
+            except Recipe.DoesNotExist:
+                return redirect("recipes_list")
+    return redirect("recipe_detail", pk=recipe_id)
