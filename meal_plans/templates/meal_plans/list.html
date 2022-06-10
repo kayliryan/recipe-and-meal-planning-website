@@ -5,7 +5,7 @@ a new meal plan -->
 This is similar to the list view for recipes, where the name of 
 each recipe is a link to the recipe's detail page. -->
 
-{% extends '../base.html' %}
+{% extends 'base.html' %}
 
 {% block pagination %}
     <div class="pagination">
@@ -32,12 +32,12 @@ each recipe is a link to the recipe's detail page. -->
   <main class="recipe-grid">
     <a href="{% url 'meal_plan_new' %}">Create Meal Plan</a>
     {% for meal_plan in meal_plans_list %}
-      <div class="recipe-card">
-        <h2 class="recipe-card-title">
-          <a href="{% url 'meal_plan_detail' meal_plan.pk %}">{{ meal_plan.name }}</a>
-        </h2>
-        <p class="recipe-card-date">{{ meal_plan.date }}</p>
-      </div>
+        <div class="recipe-card">
+          <h2 class="recipe-card-title">
+            <a href="{% url 'meal_plan_detail' meal_plan.pk %}">{{ meal_plan.name }}</a>
+          </h2>
+          <p class="recipe-card-date">{{ meal_plan.date }}</p>
+        </div>
     {% endfor %}
   </main>
 </body>

@@ -40,6 +40,8 @@ LOGOUT_REDIRECT_URL = "recipes_list"
 
 INSTALLED_APPS = [
     "meal_plans.apps.MealPlansConfig",
+    # The MealPlansConfif is the name of your app but takes out the underscores
+    # comes from your apps.py file
     "recipes.apps.RecipesConfig",
     "tags.apps.TagsConfig",
     "django.contrib.admin",

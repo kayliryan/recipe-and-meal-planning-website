@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Your shopping list</h1>
+<div>
+    <form method="POST" action="{% url 'shopping_items_delete' %}">
+        {% csrf_token %}
+        <button class="button">Delete All</button>
+    </form>
+</div>
+<ul>
+    {% for item in shoppingitem_list %}
+    <li>{{ item.food_item }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
