@@ -31,7 +31,8 @@
                     <a href="{% url 'meal_plans_list' %}">Meal Plans</a>
                 </li>
                 <li>
-                    <a href="{% url 'shopping_list' %}">Shopping List</a>
+                    <a href="{% url 'shopping_list' %}">Shopping List ({{ user.shopping_items.all|length }})</a>
+                    <!-- Why cant I do shoppingitem_list???? I use it detail.html and shopping_list -->
                 </li>
                 {% endif %}
                 <li>
